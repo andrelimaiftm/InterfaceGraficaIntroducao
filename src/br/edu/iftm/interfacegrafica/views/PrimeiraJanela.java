@@ -1,4 +1,4 @@
-package br.edu.iftm.interfacegrafica;
+package br.edu.iftm.interfacegrafica.views;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -6,6 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+
+import br.edu.iftm.handler.MouseHandler;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PrimeiraJanela {
     public static void main(String[] args) throws Exception {
@@ -32,6 +37,17 @@ public class PrimeiraJanela {
         janela.add(labelSenha);
         janela.add(campoSenha);
         janela.add(botao);
+
+        botao.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                String usuario = campoUsuario.getText();
+                String senha = campoSenha.getText();
+                System.out.printf("Usuário: %s \tSenha: %s\n",usuario,senha);
+            }
+        });
+
+        janela.addMouseListener(new MouseHandler());
 
         janela.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         janela.setVisible(true);
